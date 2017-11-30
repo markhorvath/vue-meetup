@@ -21,11 +21,18 @@
           flat
           v-for="item in menuItems"
           :key="item.title"
-          router
           :to="item.link">
           <v-icon left>{{ item.icon }}</v-icon>
           {{ item.title }}
         </v-btn>
+        <v-menu open-on-hover offset-y>
+          <v-btn flat slot="activator">Test</v-btn>
+            <v-list>
+              <v-list-tile v-for="item in items" :key="item.title" :to="item.link" @click="">
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+        </v-menu>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -48,9 +55,19 @@
           {icon: 'person', title: 'Profile', link: '/profile'},
           {icon: 'face', title: 'Sign up', link: '/signup'},
           {icon: 'lock_open', title: 'Sign in', link: '/signin'}
+        ],
+        items: [
+          { title: 'Click Me', link: '/meetup/new' },
+          { title: 'Click Me', link: '/meetup/new' },
+          { title: 'Click Me', link: '/meetup/new' },
+          { title: 'Click Me 2', link: '/meetup/new' }
         ]
       }
     }
   }
 
 </script>
+
+<style scoped>
+
+</style>
